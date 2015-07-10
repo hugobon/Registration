@@ -22,10 +22,10 @@
 			allowEdit:true,
 			encodingType:Camera.EncodingType.JPEG,
 			sourceType:Camera.PictureSourceType.CAMERA
-		}
+		};
 		navigator.camera.getPicture(successCam,failCam,camOption);
-		}
 	}
+	
 	
 	function successCam(imageURL)
 	{
@@ -42,9 +42,8 @@
 		var albumOption =
 		{
 			sourceType:Camera.PictureSourceType.PHOTOLIBRARY
-		}
+		};
 		navigator.camera.getPicture(successAlbum,failAlbum,albumOption);
-		}
 	}
 	
 	function successAlbum(imageURL)
