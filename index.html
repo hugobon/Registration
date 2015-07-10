@@ -29,12 +29,12 @@
 	
 	function successCam(imageURL)
 	{
-		document.getElementById("pic").src = "data:image/jpeg;64," + imageURL;
+		document.getElementById("pic").src = "data:image/jpeg;based64," + imageURL;
 	}
 	
 	function failCam(message)
 	{
-		//message
+		navigator.notification.alert("Error: " + message);
 	}
 	
 	function albumStart()
@@ -48,12 +48,12 @@
 	
 	function successAlbum(imageURL)
 	{
-		document.getElementById("pic").src = "data:image/jpeg;64," + imageURL;
+		document.getElementById("pic").src = "data:image/jpeg;based64," + imageURL;
 	}
 	
 	function failAlbum(message)
 	{
-		//message
+		navigator.notification.alert("Error: " + message);
 	}
 	</script>
 	
