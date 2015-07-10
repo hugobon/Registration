@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="cordova.js"></script>
+	<script>
+	function pageLoaded()
+	{
+		document.addEventListener("deviceready",ready);
+	}
+	
+	function ready()
+	{
+		navigator.notification.alert("Page up!")
+	}
+	
+	function camStart()
+	{
+		var camOption =
+		{
+			quality:80,
+			destinationType:Camera.DestinationType.DATA_URL,
+			allowEdit:true,
+			encodingType:Camera.EncodingType.JPEG,
+			sourceType:Camera.PictureSourceType.CAMERA
+		}
+		navigator.camera.getPicture(successCam,failCam,camOption);
+		}
+	}
+	
+	function successCam(imageURL)
+	{
+		document.getElementById("pic").src = "data:image/jpeg;64," + imageURL;
+	}
+	
+	function failCam(message)
+	{
+		//message
+	}
+	
+	function albumStart()
+	{
+		var albumOption =
+		{
+			sourceType:Camera.PictureSourceType.PHOTOLIBRARY
+		}
+		navigator.camera.getPicture(successAlbum,failAlbum,albumOption);
+		}
+	}
+	
+	function successAlbum(imageURL)
+	{
+		document.getElementById("pic").src = "data:image/jpeg;64," + imageURL;
+	}
+	
+	function failAlbum(message)
+	{
+		//message
+	}
+	</script>
+	
+	<style>
+	.form
+	{
+		border:1px solid black;
+	}
+	.header
+	{
+		width:300px;
+		height:250px;
+		margin:5px;
+	}
+	.register
+	{
+		width:250px;
+		height:100px;
+		margin:5px;
+		padding:5px;
+	}
+	
+	#gambor
+	{
+		
+		padding:5px;
+		float:left;	
+	}
+	
+	#pilih
+	{
+		float:left;
+		
+	}
+	#tmbh
+	{
+		float:left
+		
+		width:50px;
+		height:50px;
+	}
+	
+	@media screen and (orientation:landscape)
+	{
+		.register
+		{
+			display:inline-block;
+		}
+		
+		.header
+		{
+			display:inline-block;
+		}
+	}
+	</style>
+</head>
+<body onload="pageLoaded()">
+<form method="post">
+<div class="form">
+	<div class="header">
+		<div id="gambor">
+			<img src="" id="pic" width="150" height="200" />		
+		</div>
+		<div id="tmbh">
+		</div>
+		<div id="pilih">
+			<input type="button" value="Take Picture" onclick="camStart()" /><br /><br/>
+			<input type="button" value="From Album" onclick="albumStart()" />
+		</div>
+		<div id="tmbh">
+		</div>
+	</div>
+	<div class="register">
+		Name : <input type="text" id="name" required="required" /><br /><br />
+		Email : <input type="email" id="email" pattern="^\w+([\.\-]\w+)*\@\w+([\.\-]\w+)*\.[a-zA-Z]{2,11}$" required="required"/><br /><br />
+		<input type="submit" value="Register" />		
+	</div>
+</div>
+</form>
+</body>
+</html>
